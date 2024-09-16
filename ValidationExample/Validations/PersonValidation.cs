@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ValidationExample.Interfaces;
 using ValidationExample.Person;
+using ValidationExample.Validations;
 
 namespace ValidationExample.Validation
 {
@@ -131,6 +132,18 @@ namespace ValidationExample.Validation
 
                 }
             }
+            
+            //_____________________________________________________________________
+
+            // Gemder Validation
+            IValidation<int> GenderValidation = new GenderValidation();
+            if (!GenderValidation.IsValid(PDTO.Gender))
+            {
+                _ValidationError = $"Invalid Gender : \nMale : 0\nFemale: 1";
+                return false;
+            }
+
+            
             return true;
         }
 
